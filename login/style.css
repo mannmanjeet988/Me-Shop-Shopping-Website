@@ -40,18 +40,4 @@
     margin: 0 1rem;
   }
 
-  .main-container{
-    display:flex;
-    flex-direction: column;
-    row-gap:1.5rem;
-    padding:1.5rem;
-  }
-
-  .bottom-container{
-    display:flex;
-  }
-
-  /* .left,.right{
-    width:40%;
-  } */
-  
+ 
