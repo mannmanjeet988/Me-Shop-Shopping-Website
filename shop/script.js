@@ -17,13 +17,12 @@ if(!sessionStorage.getItem("loggedInUser")){
 }
 
 const searchBar = (document.getElementById("searchBar"))
-
 const itemSection = document.getElementsByClassName("items");
-//const endpoint="https://fakestoreapi.com/products";
+const endpoint="https://fakestoreapi.com/products";
 let products = [];
+let cartProducts =  JSON.parse (sessionStorage.getItem("cartProducts") ) || [];
 
-// Note : Click on MENU  OR   YOUR RESTAURANT MENU , you will be directed to Menu(another) page
-// To fetch Men's clothing data
+
 async function getMenu() {
   try {
     const response = await fetch(endpoint, { method: "GET" });
@@ -47,54 +46,6 @@ async function getMenu1() {
     const response = await fetch(endpoint, { method: "GET" });
     products = await response.json();
     const items = products.slice(0, 4);
-    //console.log(data);
-    renderDataOnUI(items);
-    //thankyouFnc();
-    console.log(items);
-    // return items;
-  } catch (error) {
-    console.log(error.message);
-  }
-}
-
-// To fetch jewellery items
-async function getMenu2() {
-  try {
-    const response = await fetch(endpoint, { method: "GET" });
-    fetchedData = await response.json();
-    const items = fetchedData.slice(4, 8);
-    //console.log(data);
-    renderDataOnUI(items);
-    //thankyouFnc();
-    console.log(items);
-    // return items;
-  } catch (error) {
-    console.log(error.message);
-  }
-}
-
-// To fetch Electronics items
-async function getMenu3() {
-  try {
-    const response = await fetch(endpoint, { method: "GET" });
-    fetchedData = await response.json();
-    const items = fetchedData.slice(8, 14);
-    //console.log(data);
-    renderDataOnUI(items);
-    //thankyouFnc();
-    console.log(items);
-    // return items;
-  } catch (error) {
-    console.log(error.message);
-  }
-}
-
-// To fetch Women's clothing data
-async function getMenu4() {
-  try {
-    const response = await fetch(endpoint, { method: "GET" });
-    fetchedData = await response.json();
-    const items = fetchedData.slice(14);
     //console.log(data);
     renderDataOnUI(items);
     //thankyouFnc();
@@ -137,7 +88,7 @@ function renderDataOnUI(data) {
                     </div>
                     <div class="row">Rating: ${printratingstars(product.rating.rate)}</div>
                   </div>
-                  <button id="addBtn-${product.id}">Add to Cart</button>`;
+                  <button id="addBtn-${product.id}" onclick="addtocartfunc(event)">Add to Cart</button>`;
 
     itemSection.appendChild(item);
   });
@@ -186,9 +137,29 @@ function applyfilters(){
          else if($100plus && product.price<100){
              filteredarr.pop(product);
          }
-     }
-     
+     }   
  }
-
 renderDataOnUI(filteredarr);
 }
+
+function addtocartfunc(event){
+  let str = event.target.innerText;
+  let id = Number (event.target.getAttribute('id').split('-')[1]);
+  console.log(id);
+
+  if(str=="Add to Cart"){
+      event.target.innerText = "Added"
+
+      for(let product of products){
+          if(product.id == id){
+              cartProducts.push(product);
+              break;
+          }
+      }
+
+  }
+ sessionStorage.setItem("cartProducts", JSON.stringify(cartProducts));
+  console.log(cartProducts);
+}
+
+renderDataOnUI(cartProducts);
