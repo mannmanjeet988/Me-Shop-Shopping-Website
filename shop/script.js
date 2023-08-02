@@ -9,6 +9,13 @@
 //   rating: { rate: 3.9, count: 120 },
 // };
 
+if(!sessionStorage.getItem("loggedInUser")){
+  alert("you need to signup or login first to access products");
+   setTimeout(()=>{
+    window.location.href  ="../index.html";
+   },1000);
+}
+
 const searchBar = (document.getElementById("searchBar"))
 
 const itemSection = document.getElementsByClassName("items");

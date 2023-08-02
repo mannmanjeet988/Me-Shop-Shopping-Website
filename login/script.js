@@ -1,6 +1,7 @@
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const loginBtn = document.getElementById('logIn-btn');
+let errmsg = document.querySelector("#err-msg");
 
 loginBtn.addEventListener('click', (event) => {
     event.preventDefault();
@@ -24,7 +25,7 @@ loginBtn.addEventListener('click', (event) => {
                 }
             }
             else {
-                alert('you have not signed up');
+                alert(`${email.value} is not available. You must sign in first`);
             }
         }
         else {
