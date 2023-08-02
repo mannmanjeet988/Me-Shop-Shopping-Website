@@ -18,13 +18,48 @@
         <a href="/">Shopping cart</a>
       </div>
     </nav>
+    <main class="main-container">
+      <div class="top-container">
+        <h1>My Profile</h1>
+        <form class="form-conatiner">     
+          <div >
+            <input type="text" id="fName" name="fName" placeholder="First Name">
+          </div>
+          <div >
+            <input type="text" id="lName" name="lName" placeholder="Last Name">
+          </div>
+      
+          <input type="submit" id="saveInfo-btn" value="Save Info"/>
+        </form>
+      </div>
+      <div class="bottom-container">
+        <h1>Edit Password</h1>
+        <form class="form-conatiner">
+          
+          <div >
+            <input type="password" id="oldPass" name="oldPass" placeholder="Old Password">
+          </div>
+          <div >
+            <input type="password" id="newPass" name="newPass" placeholder="New Password">
+          </div>
+          <div >
+            <input type="password" id="confirmNewPass" name="confirmNewPass" placeholder="Confirm New Password">
+          </div>
+      
+          <button  id="changePass-btn">Change Password</button>
+          <br>
+          <button id="logOut-btn" >Log Out</button>
+        </form>
+      </div>
+
+    </main>
     <!--[if lt IE 7]>
       <p class="browsehappy">
         You are using an <strong>outdated</strong> browser. Please
         <a href="#">upgrade your browser</a> to improve your experience.
       </p>
     <![endif]-->
-
+    <script src="script.js"></script>
     <script src="" async defer></script>
   </body>
 </html>

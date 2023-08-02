@@ -70,6 +70,7 @@ main aside {
   position: fixed;
   padding-top: 1rem;
   width: 11rem;
+  overflow-y: scroll;
 }
 
 main main-content {
@@ -78,9 +79,15 @@ main main-content {
   margin-left: 11rem;
 }
 
+/* .sidenav{
+  overflow-y: auto;
+} */
+
+
 aside section {
-  padding: 1rem;
+  padding: 0.8rem;
   border-bottom: 1px solid white;
+  
 }
 
 aside section:last-child {
@@ -89,12 +96,13 @@ aside section:last-child {
 
 aside section title {
   display: block;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
 }
 
 aside section li {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
+  font-size:0.8rem;
 }
 
 aside section label {
@@ -135,6 +143,7 @@ main-content .active {
 
 main-content section {
   margin-top: 1.2rem;
+  
 }
 
 main-content section title {
@@ -145,6 +154,7 @@ main-content section title {
 main-content .items {
   display: flex;
   width: auto;
+  flex-wrap: wrap;
   overflow-x: scroll;
   padding: 1rem 0;
   gap: 1rem;
@@ -152,11 +162,27 @@ main-content .items {
 
 main-content .items .item {
   border: 1px solid black;
-  width: 30%;
+  width: 23%;
+  display:flex;
+  flex-direction: column;
+  /* min-height:100px; */
+}
+
+main-content .items .item .item-name{
+  display:flex;
+  min-height:60px;
+  max-height: 60px;
+}
+
+h3{
+  display:block;
 }
 
 main-content .items .item img {
   max-width: 100%;
+  min-height:250px;
+  max-height:250px;
+  padding:0.4rem 2rem;
 }
 
 main-content .items .item .row {

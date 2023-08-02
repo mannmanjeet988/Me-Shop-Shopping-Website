@@ -21,8 +21,8 @@
     </nav>
 
     <main>
-      <aside>
-        <section>
+      <aside class="sidenav">
+        <!-- <section>
           <title>Colors</title>
           <ul>
             <li>
@@ -46,7 +46,7 @@
               <label for="white">White</label>
             </li>
           </ul>
-        </section>
+        </section> -->
         <section>
           <title>Sizes</title>
           <ul>
@@ -67,8 +67,8 @@
               <label for="xl">XL</label>
             </li>
           </ul>
-        </section>
-        <section>
+        </section> 
+         <section>
           <title>Rating</title>
           <input
             type="range"
@@ -91,26 +91,29 @@
           <title>Price Range</title>
           <ul>
             <li>
-              <input id="0-25" type="checkbox" name="prange" />
+              <input id="firstP" type="checkbox" name="prange" />
               <label for="0-25">$0 to $25</label>
             </li>
             <li>
-              <input id="25-50" type="checkbox" name="prange" />
+              <input id="secondP" type="checkbox" name="prange" />
               <label for="25-50">$25 to $50</label>
             </li>
             <li>
-              <input id="50-100" type="checkbox" name="prange" />
+              <input id="thirdP" type="checkbox" name="prange" />
               <label for="50-100">$50 to $100</label>
             </li>
             <li>
-              <input id="100on" type="checkbox" name="prange" />
+              <input id="lastP" type="checkbox" name="prange" />
               <label for="100on">$100 onwards</label>
             </li>
           </ul>
         </section>
+        <section>
+          <button id="filter-btn" onclick="applyfilters()">Apply Filter</button>
+        </section>
       </aside>
       <main-content>
-        <input type="text" placeholder="Search" />
+        <input type="text" id="searchBar" placeholder="Search by product name" />
         <div class="filters">
           <div class="filter active">All</div>
           <div class="filter">Mens</div>
@@ -118,12 +121,14 @@
           <div class="filter">Jewellery</div>
           <div class="filter">Electronics</div>
         </div>
-        <section>
-          <title>Men's Clothing</title>
-          <div class="items">
-            <div class="item">
+        <section id="top-section">
+          <title style="display:none;">Men's Clothing</title>
+          <div class="items" id="items">
+            <!-- <h3>Sorry No products Available</h3> -->
+            <!-- <div class="item">
               <img src="tshirt.png" alt="Item" />
               <div class="info">
+                <div class="name">Name</div>
                 <div class="row">
                   <div class="price">$100</div>
                   <div class="sized">S,M,L</div>
@@ -181,6 +186,8 @@
             <div class="item">
               <img src="tshirt.png" alt="Item" />
               <div class="info">
+                <div class="item-name">Name</div>
+                
                 <div class="row">
                   <div class="price">$100</div>
                   <div class="sized">S,M,L</div>
@@ -215,12 +222,12 @@
                 <div class="row">Rating:</div>
               </div>
               <button id="addBtn">Add to Cart</button>
-            </div>
+            </div> -->
           </div>
         </section>
 
-        <section>
-          <title>Women's Clothing</title>
+        <!-- <section style="display:none;">
+          <title  >Women's Clothing</title>
           <div class="items">
             <div class="item">
               <img src="tshirt.png" alt="Item" />
@@ -318,8 +325,9 @@
               <button id="addBtn">Add to Cart</button>
             </div>
           </div>
-        </section>
+        </section> -->
       </main-content>
     </main>
+    <script src="script.js"></script>
   </body>
 </html>
