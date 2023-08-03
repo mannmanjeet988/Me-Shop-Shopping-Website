@@ -25,7 +25,7 @@ function saveUser(fName,lName,emailInput,passwordInput,token){
         password: passwordInput,
         userToken: token,
     }
-    let users = JSON.parse(localStorage.getItem('users'));
+    let users = JSON.parse(localStorage.getItem('users')) ;
     if(users === null){
         users = [];
     }

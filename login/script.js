@@ -11,6 +11,7 @@ loginBtn.addEventListener('click', (event) => {
     else {
         let users = JSON.parse(localStorage.getItem('users'));
         if (users) {
+            console.log('users',users)
             let currentUser = users.find(user => {
                 return user.email === email.value.trim();
             });

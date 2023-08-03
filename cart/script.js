@@ -50,12 +50,14 @@ function renderDataOnUI(cartProducts) {
 
     let str = event.target.innerText;
     let id = Number (event.target.getAttribute('id').split('-')[1]);
-    console.log(id);
+    console.log('id',id);
+    //let cartProducts=JSON.parse(localStorage.getItem("cartProducts"));
   
     // if(str=="Remove From Cart"){
     //     updatedCart = cartProducts.filter((item) => item.id !== id);
     // }
     updatedCart = cartProducts.filter((item) => item.id !== id);
+    //localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
     sessionStorage.setItem("updatedCart", JSON.stringify(updatedCart));
     renderDataOnUI(updatedCart)
     printCheckList(updatedCart);
