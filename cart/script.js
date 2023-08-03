@@ -100,12 +100,6 @@ function renderDataOnUI(cartProducts) {
   <div id="total-amount">Rs.${findTotalinRs(cartProducts)}</div>`;
   checkOutContainer.appendChild(totalContainer1);
   checkOutContainer.appendChild(totalContainer2);
-
-  // const btn = document.createElement("button");
-  // btn.setAttribute=("id","checkout-btn")
-  // // btn.setAttribute("onclick",)
-  // btn.innerText= `Click To Checkout`;
-  // checkOutContainer.appendChild(btn); 
 }
 printCheckList(cartProducts);
 
@@ -136,4 +130,5 @@ findTotalinRs(cartProducts);
     renderDataOnUI(cartProducts);
     printCheckList(cartProducts);
     window.open("../razorpay", "_blank");
+    alert("Your order is placed sucessfully");
 })

@@ -16,6 +16,15 @@ if(!sessionStorage.getItem("loggedInUser")){
    },1000);
 }
 
+document.getElementById("signup-btn").addEventListener("click",(event)=>{
+  if(sessionStorage.getItem("loggedInUser")){
+    alert("you have already logged in");
+      setTimeout(()=>{
+      window.location.href ="../shop";
+     },1000);
+}
+})
+
 const searchBar = (document.getElementById("searchBar"))
 const itemSection = document.getElementsByClassName("items");
 const endpoint="https://fakestoreapi.com/products";

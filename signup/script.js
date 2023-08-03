@@ -6,6 +6,13 @@ const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirmPassword');
 const token = generateAccessToken();
 
+if(sessionStorage.getItem("loggedInUser")){
+    alert("you have already logged in");
+      setTimeout(()=>{
+      window.location.href ="../shop/index.html";
+     },1000);
+}
+
 function checkIfUserExist(email){
     let users = JSON.parse(localStorage.getItem('users'));
     // users will be array of objects

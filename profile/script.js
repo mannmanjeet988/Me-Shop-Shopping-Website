@@ -11,9 +11,9 @@ console.log(currentUser);
 
 
 fName.value = currentUser.firstName;
-console.log(fName.innerText);
+console.log(fName.value);
 lName.value = currentUser.lastName;
-console.log(lName.innerText);
+console.log(lName.value);
 oldPass.value = currentUser.password;
 
 saveInfoBtn.addEventListener("click",(event)=>{

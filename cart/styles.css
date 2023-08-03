@@ -191,13 +191,15 @@ flex-direction: row;
 }
 
 .item{
-width:25%;
+max-width:250px;
+min-width:250px;
 }
 
 .item img{
   min-height:250px;
   max-height:250px;
   padding:0.5rem;
+  
 }
 
 .items .item .item-title{
