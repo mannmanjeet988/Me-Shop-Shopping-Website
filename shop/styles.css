@@ -216,3 +216,13 @@ main-content .items .item .circle {
   border-radius: 100%;
   margin: 0 5px;
 }
+
+#filter-btn{
+  margin-bottom: 80px;
+  background-color: white;
+  color:black;
+  padding:10px;
+  border:none;
+  outline:none;
+  margin-left:1rem;
+}
