@@ -99,7 +99,7 @@ searchBar.addEventListener("input",(event)=>{
 
 function applyfilters(){
   console.log("high");
- let ratingvalue = Number (document.querySelector(".sidenav>section:nth-child(2)>input").value);
+ let ratingvalue = Number (document.querySelector(".sidenav>section:nth-child(3)>input").value);
  let $0to25 = document.querySelector("#firstP").checked;
  let $25to50 = document.querySelector("#secondP").checked;
  let $50to100= document.querySelector("#thirdP").checked;
@@ -126,6 +126,7 @@ function applyfilters(){
  }
 renderDataOnUI(filteredarr);
 }
+//applyfilters();
 
 function addtocartfunc(event){
   let str = event.target.innerText;
