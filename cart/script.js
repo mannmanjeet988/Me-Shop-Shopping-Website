@@ -5,9 +5,13 @@ function renderDataOnUI(cartProducts) {
     const itemSection = document.getElementsByClassName("items")[0];
     const message = document.getElementById("msg");
      itemSection.innerHTML = ``;
-    
-    message.style.display="none";
+    if(cartProducts.length===0){
+      message.style.display="block";
+      document.getElementById("checkout-btn").style.display="none";
+    }
+    //message.style.display="none";
     cartProducts.forEach((product) => {
+      message.style.display="none";
       const item = document.createElement("div");
       item.className = "item";
 
@@ -51,17 +55,16 @@ function renderDataOnUI(cartProducts) {
     let str = event.target.innerText;
     let id = Number (event.target.getAttribute('id').split('-')[1]);
     console.log('id',id);
-    //let cartProducts=JSON.parse(localStorage.getItem("cartProducts"));
-  
+    let cartProducts=JSON.parse(sessionStorage.getItem("cartProducts"));
     // if(str=="Remove From Cart"){
     //     updatedCart = cartProducts.filter((item) => item.id !== id);
     // }
     updatedCart = cartProducts.filter((item) => item.id !== id);
     //localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
-    sessionStorage.setItem("updatedCart", JSON.stringify(updatedCart));
+    sessionStorage.setItem("cartProducts", JSON.stringify(updatedCart));
     renderDataOnUI(updatedCart)
     printCheckList(updatedCart);
-      console.log(updatedCart);
+      console.log(cartProducts);
   }
   renderDataOnUI(cartProducts);
 

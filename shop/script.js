@@ -41,21 +41,6 @@ async function getMenu() {
 
 getMenu();
 
-async function getMenu1() {
-  try {
-    const response = await fetch(endpoint, { method: "GET" });
-    products = await response.json();
-    const items = products.slice(0, 4);
-    //console.log(data);
-    renderDataOnUI(items);
-    //thankyouFnc();
-    console.log(items);
-    // return items;
-  } catch (error) {
-    console.log(error.message);
-  }
-}
-
 function renderDataOnUI(data) {
   const itemSection = document.getElementById("items");
   itemSection.innerHTML = ``;
@@ -193,10 +178,7 @@ filters.forEach((filter) => {
           })
 
       });
-
-
       console.log(filteredarr);
       renderDataOnUI(filteredarr);
-
   });
 });

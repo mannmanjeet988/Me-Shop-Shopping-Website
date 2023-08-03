@@ -32,7 +32,8 @@ saveInfoBtn.addEventListener("click",(event)=>{
     users[index].lastName=lName.value;
     // obj.password=newPass;
     localStorage.setItem('users',JSON.stringify(users));
-    alert("Details updated")
+    alert("Details updated");
+    window.location.href="../shop";
 })
 
 
@@ -69,5 +70,8 @@ const confirmNewPass = document.getElementById('confirmNewPass').value.trim();
  });
 
    logOutBtn.addEventListener('click',(event)=>{
+    // 
+    event.preventDefault();
+    sessionStorage.removeItem("loggedInUser");
         window.location.href ="../index.html";
     });
