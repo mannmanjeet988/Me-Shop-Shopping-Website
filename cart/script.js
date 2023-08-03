@@ -14,7 +14,7 @@ function renderDataOnUI(cartProducts) {
       item.innerHTML = `
                     <img src=${product.image} alt="Item" />
                     <div class="info">
-                    <div class="item-title">${product.title}</div>
+                    <div class="item-name">${product.title}</div>
                       <div class="row">
                         <div class="price">$${product.price}</div>
                         <div class="sized">S,M,L</div>
@@ -52,15 +52,15 @@ function renderDataOnUI(cartProducts) {
     let id = Number (event.target.getAttribute('id').split('-')[1]);
     console.log(id);
   
-    if(str=="Remove From Cart"){
-        updatedCart = cartProducts.filter((item) => item.id !== id);
-    }
-    
-    sessionStorage.setItem("cartProducts", JSON.stringify(updatedCart));
+    // if(str=="Remove From Cart"){
+    //     updatedCart = cartProducts.filter((item) => item.id !== id);
+    // }
+    updatedCart = cartProducts.filter((item) => item.id !== id);
+    sessionStorage.setItem("updatedCart", JSON.stringify(updatedCart));
     renderDataOnUI(updatedCart)
+    printCheckList(updatedCart);
       console.log(updatedCart);
   }
-
   renderDataOnUI(cartProducts);
 
   function printCheckList(cartProducts){
@@ -96,12 +96,14 @@ function renderDataOnUI(cartProducts) {
   checkOutContainer.appendChild(totalContainer1);
   checkOutContainer.appendChild(totalContainer2);
 
-  const btn = document.createElement("button");
-  btn.setAttribute=("id","checkout-btn")
-  btn.innerText= `Click To Checkout`;
-  checkOutContainer.appendChild(btn); 
+  // const btn = document.createElement("button");
+  // btn.setAttribute=("id","checkout-btn")
+  // // btn.setAttribute("onclick",)
+  // btn.innerText= `Click To Checkout`;
+  // checkOutContainer.appendChild(btn); 
 }
 printCheckList(cartProducts);
+
 
 function findTotal(cartProducts){
     let totalamount=0;
@@ -121,3 +123,12 @@ function findTotalinRs(cartProducts){
     return totalamount;
 }
 findTotalinRs(cartProducts);
+
+//function to proceed to checkout
+ document.getElementById("checkout-btn").addEventListener("click",()=>{
+    localStorage.setItem('total', JSON.stringify(findTotalinRs(cartProducts)));
+    cartProducts = [];
+    renderDataOnUI(cartProducts);
+    printCheckList(cartProducts);
+    window.open("../razorpay", "_blank");
+})

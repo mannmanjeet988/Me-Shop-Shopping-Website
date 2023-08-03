@@ -163,3 +163,40 @@ function addtocartfunc(event){
 }
 
 renderDataOnUI(cartProducts);
+
+// Function to implement toggle switch feature on item category buttons(div)
+const filters = document.querySelectorAll(".filter");
+filters.forEach((filter) => {
+  filter.addEventListener("click", (e) => {
+      e.target.classList.toggle("active");
+
+      let activearr = document.querySelectorAll(".active");
+      let filteredarr = [];
+      console.log(activearr);
+      activearr.forEach((ele) => {
+          let str = ele.innerText.toLowerCase();
+          console.log(str);
+          if(str=="all"){
+              str="";
+          }
+          if(str=="mens"){
+              str="men's";
+          }
+          if(str=="womens"){
+            str="women's";
+        }
+
+          products.forEach((card) => {
+              if (card.category.includes(str)) {
+                  filteredarr.push(card);
+              };
+          })
+
+      });
+
+
+      console.log(filteredarr);
+      renderDataOnUI(filteredarr);
+
+  });
+});
