@@ -192,3 +192,11 @@ filters.forEach((filter) => {
       renderDataOnUI(filteredarr);
   });
 });
+
+let logOutBtn=document.getElementById("log-out-btn");
+logOutBtn.addEventListener('click',(event)=>{
+  // 
+  event.preventDefault();
+  sessionStorage.removeItem("loggedInUser");
+      window.location.href ="../index.html";
+  });

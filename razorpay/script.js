@@ -4,6 +4,10 @@
 // Add button code documentation:
 // https://razorpay.com/docs/payments/payment-gateway/web-integration/standard/build-integration#code-to-add-pay-button
 
+document.getElementById("cancel-button").addEventListener("click", function (e){
+  location.href="../shop";
+})
+
 document.getElementById("rzp-button1").addEventListener("click", function (e) {
   var options = {
     key: "rzp_test_xV39ZNbgU1Du4V", // Enter the Key ID generated from the Dashboard
@@ -16,6 +20,9 @@ document.getElementById("rzp-button1").addEventListener("click", function (e) {
     },
     image:
       "https://www.mintformations.co.uk/blog/wp-content/uploads/2020/05/shutterstock_583717939.jpg",
+      handler: function(){
+        location.href="./shop";
+      }
   };
 
   var rzpy1 = new Razorpay(options);

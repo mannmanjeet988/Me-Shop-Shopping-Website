@@ -66,11 +66,9 @@ const confirmNewPass = document.getElementById('confirmNewPass').value.trim();
     else{
         alert('Please enter correct old password')
     }
- 
  });
 
    logOutBtn.addEventListener('click',(event)=>{
-    // 
     event.preventDefault();
     sessionStorage.removeItem("loggedInUser");
         window.location.href ="../index.html";

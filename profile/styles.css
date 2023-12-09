@@ -37,6 +37,11 @@
     font-weight: bold;
   }
 
+  .brand {
+    display: flex;
+    gap: 90vw;
+  }
+
   .form-conatiner input{
     width:200vh;
     padding:1rem;
