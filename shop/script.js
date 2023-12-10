@@ -9,28 +9,11 @@
 //   rating: { rate: 3.9, count: 120 },
 // };
 
-if(!sessionStorage.getItem("loggedInUser")){
-  alert("you need to signup or login first to access products");
-   setTimeout(()=>{
-    window.location.href  ="../index.html";
-   },1000);
-}
-
-document.getElementById("signup-btn").addEventListener("click",(event)=>{
-  if(sessionStorage.getItem("loggedInUser")){
-    alert("you have already logged in");
-      setTimeout(()=>{
-      window.location.href ="../shop";
-     },1000);
-}
-})
-
-const searchBar = (document.getElementById("searchBar"))
+const searchBar = document.getElementById("searchBar");
 const itemSection = document.getElementsByClassName("items");
-const endpoint="https://fakestoreapi.com/products";
+const endpoint = "https://fakestoreapi.com/products";
 let products = [];
-let cartProducts =  JSON.parse (sessionStorage.getItem("cartProducts") ) || [];
-
+let cartProducts = JSON.parse(sessionStorage.getItem("cartProducts")) || [];
 
 async function getMenu() {
   try {
@@ -80,9 +63,13 @@ function renderDataOnUI(data) {
                         <div class="circle" style="background-color: #203d3e"></div>
                       </div>
                     </div>
-                    <div class="row">Rating: ${printratingstars(product.rating.rate)}</div>
+                    <div class="row">Rating: ${printratingstars(
+                      product.rating.rate
+                    )}</div>
                   </div>
-                  <button id="addBtn-${product.id}" onclick="addtocartfunc(event)">Add to Cart</button>`;
+                  <button id="addBtn-${
+                    product.id
+                  }" onclick="addtocartfunc(event)">Add to Cart</button>`;
 
     itemSection.appendChild(item);
   });
@@ -92,68 +79,66 @@ function printratingstars(rating) {
   rating = Math.round(rating);
   let str = "";
   for (let i = 0; i < rating; i++) {
-      str += "⭐";
+    str += "⭐";
   }
   return str;
 }
 
-searchBar.addEventListener("input",(event)=>{
+searchBar.addEventListener("input", (event) => {
   let searchedProduct = searchBar.value.toLowerCase().trim();
-  let filteredProducts= products.filter((product)=>{
-    return(product.title.toLowerCase().includes(searchedProduct))
+  let filteredProducts = products.filter((product) => {
+    return product.title.toLowerCase().includes(searchedProduct);
   });
-  console.log(filteredProducts)
+  console.log(filteredProducts);
   renderDataOnUI(filteredProducts);
-})
+});
 
-function applyfilters(){
+function applyfilters() {
   console.log("high");
- let ratingvalue = Number (document.querySelector(".sidenav>section:nth-child(3)>input").value);
- let $0to25 = document.querySelector("#firstP").checked;
- let $25to50 = document.querySelector("#secondP").checked;
- let $50to100= document.querySelector("#thirdP").checked;
- let $100plus = document.querySelector("#lastP").checked;
+  let ratingvalue = Number(
+    document.querySelector(".sidenav>section:nth-child(3)>input").value
+  );
+  let $0to25 = document.querySelector("#firstP").checked;
+  let $25to50 = document.querySelector("#secondP").checked;
+  let $50to100 = document.querySelector("#thirdP").checked;
+  let $100plus = document.querySelector("#lastP").checked;
 
- let filteredarr = [];
- for(let product of products){
-     if(Math.round (product.rating.rate) >= ratingvalue){
-         filteredarr.push(product);
+  let filteredarr = [];
+  for (let product of products) {
+    if (Math.round(product.rating.rate) >= ratingvalue) {
+      filteredarr.push(product);
 
-         if($0to25 && (product.price<0 || product.price>25)){
-             filteredarr.pop(product);
-         }
-         else if($25to50 && (product.price<25 || product.price>50)){
-             filteredarr.pop(product);
-         }
-         else if($50to100 && (product.price<50 || product.price>100)){
-             filteredarr.pop(product);
-         }
-         else if($100plus && product.price<100){
-             filteredarr.pop(product);
-         }
-     }   
- }
-renderDataOnUI(filteredarr);
+      if ($0to25 && (product.price < 0 || product.price > 25)) {
+        filteredarr.pop(product);
+      } else if ($25to50 && (product.price < 25 || product.price > 50)) {
+        filteredarr.pop(product);
+      } else if ($50to100 && (product.price < 50 || product.price > 100)) {
+        filteredarr.pop(product);
+      } else if ($100plus && product.price < 100) {
+        filteredarr.pop(product);
+      }
+    }
+  }
+  renderDataOnUI(filteredarr);
 }
 //applyfilters();
 
-function addtocartfunc(event){
+function addtocartfunc(event) {
   let str = event.target.innerText;
-  let id = Number (event.target.getAttribute('id').split('-')[1]);
+  let id = Number(event.target.getAttribute("id").split("-")[1]);
   console.log(id);
 
-  if(str=="Add to Cart"){
-      event.target.innerText = "Added"
+  if (str == "Add to Cart") {
+    event.target.innerText = "Added";
 
-      for(let product of products){
-          if(product.id == id){
-              cartProducts.push(product);
-              break;
-          }
+    for (let product of products) {
+      if (product.id == id) {
+        cartProducts.push(product);
+        break;
       }
-
+    }
   }
- sessionStorage.setItem("cartProducts", JSON.stringify(cartProducts));
+  sessionStorage.setItem("cartProducts", JSON.stringify(cartProducts));
   console.log(cartProducts);
 }
 
@@ -163,40 +148,47 @@ renderDataOnUI(cartProducts);
 const filters = document.querySelectorAll(".filter");
 filters.forEach((filter) => {
   filter.addEventListener("click", (e) => {
-      e.target.classList.toggle("active");
+    e.target.classList.toggle("active");
 
-      let activearr = document.querySelectorAll(".active");
-      let filteredarr = [];
-      console.log(activearr);
-      activearr.forEach((ele) => {
-          let str = ele.innerText.toLowerCase();
-          console.log(str);
-          if(str=="all"){
-              str="";
-          }
-          if(str=="mens"){
-              str="men's";
-          }
-          if(str=="womens"){
-            str="women's";
+    let activearr = document.querySelectorAll(".active");
+    let filteredarr = [];
+    console.log(activearr);
+    activearr.forEach((ele) => {
+      let str = ele.innerText.toLowerCase();
+      console.log(str);
+      if (str == "all") {
+        str = "";
+      }
+      if (str == "mens") {
+        str = "men's";
+      }
+      if (str == "womens") {
+        str = "women's";
+      }
+
+      products.forEach((card) => {
+        if (card.category.includes(str)) {
+          filteredarr.push(card);
         }
-
-          products.forEach((card) => {
-              if (card.category.includes(str)) {
-                  filteredarr.push(card);
-              };
-          })
-
       });
-      console.log(filteredarr);
-      renderDataOnUI(filteredarr);
+    });
+    console.log(filteredarr);
+    renderDataOnUI(filteredarr);
   });
 });
 
-let logOutBtn=document.getElementById("log-out-btn");
-logOutBtn.addEventListener('click',(event)=>{
-  // 
+let logOutBtn = document.getElementById("log-out-btn");
+logOutBtn.addEventListener("click", (event) => {
   event.preventDefault();
   sessionStorage.removeItem("loggedInUser");
-      window.location.href ="../index.html";
-  });
+  window.location.href = "../index.html";
+});
+  
+  // document.getElementById("signup-btn").addEventListener("click", (event) => {
+  //   if (sessionStorage.getItem("loggedInUser")) {
+  //     alert("you have already logged in");
+  //     setTimeout(() => {
+  //       window.location.href = "../shop";
+  //     }, 100);
+  //   }
+  // });

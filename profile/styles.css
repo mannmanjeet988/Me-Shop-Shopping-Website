@@ -39,7 +39,12 @@
 
   .brand {
     display: flex;
-    gap: 90vw;
+    gap: 84vw;
+  }
+
+  #meshopLink{
+    font-size: 24px;
+    font-weight: 700;
   }
 
   .form-conatiner input{

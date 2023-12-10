@@ -3,12 +3,12 @@ const password = document.getElementById('password');
 const loginBtn = document.getElementById('logIn-btn');
 let errmsg = document.querySelector("#err-msg");
 
-if(sessionStorage.getItem("loggedInUser")){
-    alert("you have already logged in");
-      setTimeout(()=>{
-      window.location.href ="../shop/index.html";
-     },1000);
-}
+// if(sessionStorage.getItem("loggedInUser")){
+//     alert("you have already logged in");
+//       setTimeout(()=>{
+//       window.location.href ="../shop/index.html";
+//      },1000);
+// }
 
 loginBtn.addEventListener('click', (event) => {
     event.preventDefault();
